@@ -23,17 +23,27 @@ using namespace std;
 //     void func(int);
 // }
 
-void func();
-extern "C" void func(int);
+// void func();
+// extern "C" void func(int);
+
+// 3-第三方框架/库:可能是用C语言写的开源库
+#include "05-math.h"
+extern "C" void other();
+
+#include "test.h"
 
 int main(){
 
-    getchar();
+    cout << sum(10, 20) << endl;
+    cout << delta(30, 20) << endl;
+
+    // getchar();
     return 0;
 
 }
 
-void func(){
-}
-void func(int){
-}
+// void func(){
+// }
+// void func(int){
+// }
+
