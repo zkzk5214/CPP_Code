@@ -25,15 +25,33 @@ inline int sum(int v1, int v2){
 //     run();
 // }
 
-#define add(v1,v2) v1 + v2 // 宏替换
+// #define add(v1,v2) v1 + v2 // 宏替换
 // 内联函数和宏, 都可以减少函数调用的开销
 // 对比宏, 内联函数多了语法检测和函数特性
+
+// 思考一下代码的区别
+// #define add(v) v + v // (1)
+inline int add(int v){  // (2)
+    return v + v;
+}
 
 int main(){
     func();
     // int c = sum(10,20); // ==> int c = 10+20
-    int c = add(10,20);
+    // int c = add(10,20);
+
+    int a = 10;
+    int c = add(++a); // (1) c = ++a + ++a = 11 + 12 (2) 11+11
     cout << c << endl;
+
+    // Other Question 
+    int b = 1;
+    int d = 2;
+    // ( b = d ) = 4;
+    ( b > d ? b : d) = 4; // b=4 if b>d else d=4
+    cout << "b = " << b << endl;
+    cout << "d = " << d << endl;
+
 
     // getchar();
     return 0;
