@@ -5,34 +5,23 @@
 !.vscode/launch.json
 !.vscode/extension.json
 
-# Prerequisites
-*.d
+*
+!.gitignore
+!*/
+!*.cpp
+!*.cxx
+!*.c
+!*.cc
+!*.hpp
+!*.h
+!*.vcproj
+!*.sln
 
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
-
-# Precompiled Headers
-*.gch
-*.pch
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
-*.exe
-*.out
-*.app
-
-/.vs/
-/x64/
+!.**/*.cpp
+!.**/*.cxx
+!.**/*.c
+!.**/*.cc
+!.**/*.hpp
+!.**/*.h
+!.**/*.vcproj
+!.**/*.sln
