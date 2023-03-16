@@ -21,13 +21,18 @@ inline int sum(int v1, int v2){
 */ 
 
 // 4-有些函数即使声明为inline,也不一定会被编译器内联,比如递归函数
-inline void run(){
-    run();
-}
+// inline void run(){
+//     run();
+// }
+
+#define add(v1,v2) v1 + v2 // 宏替换
+// 内联函数和宏, 都可以减少函数调用的开销
+// 对比宏, 内联函数多了语法检测和函数特性
 
 int main(){
     func();
-    int c = sum(10,20); // ==> int c = 10+20
+    // int c = sum(10,20); // ==> int c = 10+20
+    int c = add(10,20);
     cout << c << endl;
 
     // getchar();

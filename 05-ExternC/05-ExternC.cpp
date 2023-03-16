@@ -30,7 +30,7 @@ using namespace std;
 #include "05-math.h"
 extern "C" void other();
 
-#include "test.h"
+// #include "test.h"
 
 int main(){
 
