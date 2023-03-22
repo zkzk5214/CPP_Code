@@ -35,7 +35,7 @@ int main(){
     person2.m_age = 20;
     person2.run_();
 
-    getchar();
+    // getchar();
     return 0;
 }
 
