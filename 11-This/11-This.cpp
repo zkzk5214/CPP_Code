@@ -2,7 +2,10 @@
 using namespace std;
 
 struct Person{
+    int m_id;
     int m_age;
+    int m_height;
+
 
     void run(){
         cout << "Person::run()" << m_age << endl;
@@ -23,13 +26,30 @@ struct Person{
         m_age = 3; // 等价 this->m_age = 3;
         // 不可以利用this.m_age来访问变量,因为this是指针,必须用this->m_age
     }
+    void display(){
+        cout << "id = " << m_id 
+            << ", age = " << m_age
+            << ", height = " << m_height << endl;
+    }
 };
+
+// 原理:如何利用指针间接访问所指向对象的成员变量?
+// 1. 从指针中取出对象的地址
+// 2. 利用对象的地址+成员变量的偏移量计算出成员变量的地址
+// 3. 根据成员变量的地址访问成员变量的存储空间
 
 int main(){
 
     Person person1;
-    person1.m_age = 10; // 放在栈空间
+    person1.m_id = 10;
+    person1.m_age = 20; // 放在栈空间
+    person1.m_height = 30;
+    person1.display();
     person1.run();
+
+    Person *p = &person1;
+    p->m_id = 10;
+    p->m_age = 20;
 
     Person person2;
     person2.m_age = 20;
@@ -54,3 +74,4 @@ int main(){
 // 堆空间
 //   需要主动去申请和释放
 // 
+
