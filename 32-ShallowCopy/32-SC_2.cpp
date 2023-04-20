@@ -17,7 +17,7 @@ class Car {
         if (name == NULL) return;
 
         // 申请新的堆空间
-        m_name = new char[strlen(name)+1]{}; // {}保证全部都是0,即保证最后一个也是0
+        // m_name = new char[strlen(name) + 1] {}; // {}保证全部都是0,即保证最后一个也是0 (这句代码不兼容c++17)
         // 拷贝字符串数据到新的空间 
         strcpy(m_name, name);
     }
@@ -61,9 +61,9 @@ int main() {
     // Car *car = new Car(100, "bmw"); // string " "
 	// car -> display();
 
-    Car car1(100,"bmw");
-    Car car2 = car1;
-    car2.display();
+    // Car car1(100,"bmw");
+    // Car car2 = car1;
+    // car2.display();
 
 	// getchar();
 	return 0;
