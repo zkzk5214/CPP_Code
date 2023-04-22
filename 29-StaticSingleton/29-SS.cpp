@@ -12,6 +12,8 @@ private:
     ~Rocket(){}; // 1-析构函数私有化,防止 main 中删除指针(delete p1);
     static Rocket *ms_rocket; // 2-每一次访问 ms_rocket 是同一个变量
     // static Rocket ms_rocket; // (不建议)对象尽量放堆空间,以及内存的灵活使用
+    void operator=(const Rocket &rocket){} // 赋值运算符私有化,使其不能赋值
+    Rocket(const Rocket &rocket){} // 拷贝构造私有化,使其不能拷贝
 public:
     static Rocket *sharedRocket(){ // 3-
         // 这里要考虑多线程安全,多线程同时访问可以会造成对象浪费
@@ -41,7 +43,9 @@ int main(){
 
     Rocket *p1 = Rocket::sharedRocket();
     Rocket *p2 = Rocket::sharedRocket();
-    Rocket *p3 = p1 -> sharedRocket();
+    Rocket *p3 = p1 -> sharedRocket(); 
+    // *p1 = *p2; // 加入15行使得该操作不被允许
+    // Rocket *p4 = new Rocket(*p2); // 拷贝构造,加入16行使得该操作不被允许
 
     cout << p1 << endl;
     cout << p2 << endl;

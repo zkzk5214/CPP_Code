@@ -3,6 +3,7 @@ using namespace std;
 
 /*
 左移右移运算符
+优先选择重载成员函数,不能满足需求再选择重载全局函数
 */
 
 class Point {
@@ -31,6 +32,7 @@ ostream &operator<<(ostream &cout, const Point &point){ // 返回cout
 
 // input stream -> istream
 istream &operator>>(istream &cin, Point &point) {
+    // 通过键盘输入来改变传递参数所以Point不能是const
 	cin >> point.m_x;
 	cin >> point.m_y;
 	return cin;
@@ -42,10 +44,10 @@ int main() {
     Point p2(20,30);
 
     cout << p1 << p2; // cout << p1 打印完返回 cout
+    // cin >> p1 >> p2;
 
-
-    // p1.display();
-    // p2.display();
+    p1.display();
+    p2.display();
 
 	// getchar(); 
 	return 0;
