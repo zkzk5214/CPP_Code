@@ -4,8 +4,9 @@ using namespace std;
 /*
 1-Lambda表达式
 1.1-有点类似于JavaScript中的闭包、iOS中的Block，本质就是函数
-1.2-完整结构: [capture list] (params list) mutable exception-> return type { function body } ✓capture list:捕获外部变量列表
-✓params list:形参列表，不能使用默认参数，不能省略参数名
+1.2-完整结构: [capture list] (params list) mutable exception-> return type { function body } 
+✓ capture list:捕获外部变量列表
+✓ params list:形参列表，不能使用默认参数，不能省略参数名
 ✓ mutable:用来说用是否可以修改捕获的变量
 ✓ exception:异常设定
 ✓return type:返回值类型
