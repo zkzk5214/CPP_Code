@@ -35,18 +35,23 @@ void test() {
 	
 	cout << 1 << endl;
 	{
-        // 当对象内存在堆空间时,必须new一个对象,如果使用传统指针则需要考虑delete问题
-        // 智能指针p指向了堆空间的Person对象
-        // 智能指针的生命周期跟随对象,对象销毁(离开{}后),智能指针也销毁
-        // 智能指针的对象不建议指向栈空间
+        /*
+		当对象内存在堆空间时,必须new一个对象,如果使用传统指针则需要考虑delete问题
+		2.1-智能指针p指向了堆空间的Person对象
+			智能指针的生命周期跟随对象,对象销毁(离开{}后),智能指针也销毁
+			智能指针的对象不建议指向栈空间
+		*/
 		auto_ptr<Person> p(new Person(20)); // c++98
 		p->run();
+
         // Person p(20);
 	    // p.run();
+		
 	}
 	cout << 2 << endl;
 }
 
+// 智能指针的简单自实现
 template <typename T>
 class SmartPointer {
 private:
