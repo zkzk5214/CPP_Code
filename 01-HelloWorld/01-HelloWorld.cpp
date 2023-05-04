@@ -4,26 +4,30 @@
  * to the user.
 */
 
-# include <iostream>  // <> 先去系统目录中找头文件，如果没有在到当前目录下找。
+// <> first go to the system directory to find the Header File, if not, then go to the current directory to find it.
+# include <iostream>
+// In the real development, try to aviod using the instruction like 'using namespace std:' that directly introduce
+// the entire namespace, otherwise it will cause unnecessary problems due to namespace pollution. For example, if u 
+// write a function with the same name as the one in 'std', the compiler will not know which function to use, which
+// will cause a compilation error. It is recommended to use: 'std::count <<"Hello, world" << std::endl;'
 using namespace std;
-// 真正的开发过程中， 尽量避免使用 using namespace std; 等直接引入整个命名空间，否则会因为命名空间污染导致很多不必要的问题， 
-// 比如自己写的某个函数，名称正好和 std 中的一样， 编译器会不知道使用哪一个， 引起编译报错， 建议使用:
-// std::count <<"Hello, world" << std::endl;
 
 int main(){
-    cout << "Hello, world!!!" << endl; // 终端输出换行 
+    cout << "Hello, world!!!" << endl; // Terminal output newline
 
-    // endl - 换行
+    // endl: End-of-line
     // 1)
-    // cout << "Hello, world" << "\n"; // "\n" 可代替 endl
+    cout << "Hello, world" << "\n"; // "\n" can replace endl
     // 2) 
-    // cout << "Hello" << endl;
-    // cout << "World" ;
+    cout << "Hello" << endl;
+    cout << "World" ;
     // 3)
-    // cout << "Hello" << endl << "World" ;
+    cout << "Hello" << endl << "World" ;
     
-    getchar(); // 等待键盘输入（如果敲回车就会读取键盘输入,vscode中不太好用，Terminal中尝试）
+    // Wait for keyboard input(if u press Enter, it reads keyboard entry, 
+    // it's not available in vscode, try it in Terminal)
+    // getchar(); 
     return 0;
 }
 
-// 折叠展开 command+option+[ or ]
+// Fold Expand in vscode command+option+[ or ]
