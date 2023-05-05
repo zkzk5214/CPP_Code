@@ -22,4 +22,4 @@
 # include <stdio.h>
 
 // If it's a system-provided files, it is best to use '<>', if it's a file created by the developer, it is best to use " "
-# include "01-HelloWorld.txt"  // 如果是系统自带的文件，最好用 < >；如果是开发人员自己创建的文件，最好用 ""
+// #include "01-HelloWorld.txt"  // 如果是系统自带的文件，最好用 < >；如果是开发人员自己创建的文件，最好用 ""
