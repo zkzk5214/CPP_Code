@@ -11,6 +11,53 @@ using namespace std;
     C++ support.
 */
 
+int sum_(int, int); // Function prototype
+int sum_(int, int, int);
+
+void func(int, double);
+void func(double, int);
+
+int func(int);
+double func();
+
+void display(int);
+void display(long);
+void display(float);
+
+int main() {
+    // 1-1)
+    cout << sum_(10, 20) << endl;
+    cout << sum_(10, 20, 30) << endl;
+
+    // 1-2
+    func(10, 10.5);
+    func(10.5 ,10);
+
+    // 2 
+    func(10);
+
+    // 3
+    display(10); // long l = 10; Implicit Cast ；long l = (long) 10; Explicit Cast
+    display(10L);
+    // display(10.0); // call to 'display' is ambiguous
+
+    /*
+    int: 4byte=32bit -2**31~2**31-1
+    unsigned: 4byte=32bit 0~2**31-1
+    long: 4byte=32bit -2**31~2**31-1
+    short: 2byte=16bit -2**15~2**15-1
+    int and long (The size may be different on different platforms, int>=16, long 32) 
+    sizeof(int) <= sizeof(long)
+    */ 
+   
+    // getchar(); 
+    return 0;
+}
+
+// Debug mode: a lot of debugging information, the file is bloated
+// Release mode: remove debugging informatoin, and the generated executable file is more streamlined and efficient
+
+
 int sum_(int v1, int v2) {
     return v1 + v2;
 }
@@ -55,37 +102,3 @@ void display(long a){
 void display(float a){
     cout << "display(float) -" << a << endl;
 }
-
-int main() {
-
-    // 1-1)
-    cout << sum_(10, 20) << endl;
-    cout << sum_(10, 20, 30) << endl;
-
-    // 1-2
-    func(10, 10.5);
-    func(10.5 ,10);
-
-    // 2 
-    func(10);
-
-    // 3
-    display(10); // long l = 10; Implicit Cast ；long l = (long) 10; Explicit Cast
-    display(10L);
-    // display(10.0); // call to 'display' is ambiguous
-
-    /*
-    int: 4byte=32bit -2**31~2**31-1
-    unsigned: 4byte=32bit 0~2**31-1
-    long: 4byte=32bit -2**31~2**31-1
-    short: 2byte=16bit -2**15~2**15-1
-    int and long (The size may be different on different platforms, int>=16, long 32) 
-    sizeof(int) <= sizeof(long)
-    */ 
-   
-    // getchar(); 
-    return 0;
-}
-
-// Debug mode: a lot of debugging information, the file is bloated
-// Release mode: remove debugging informatoin, and the generated executable file is more streamlined and efficient
