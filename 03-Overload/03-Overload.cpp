@@ -1,12 +1,15 @@
 #include<iostream>
 using namespace std;
 /*
-1-The function names of the two functions are exactly the same, but the parameter types/numbers/sequences are different.
-2-The return type is independent of the overload.
+1-The function signatures of the two functions are exactly the same, 
+    but the parameter types/numbers/sequences are different.
+2-The return type is independent of the overload
+    (the function’s return value is not part of the signature).
 3-When calling a function, the implicit type cast of the actual parameter may cause ambiguity.
     Which essence adopts name mangline/name decoration technology.
-    C++ compiler will adapt and modify symbol names(such as function names) by default.
-    overloading can generate multiple different function names, and different compilers have different generation rules.
+    C++ compiler will adapt and modify symbol names(such as function signatures) by default.
+    overloading can generate multiple different function signatures, 
+        and different compilers have different generation rules.
 4-C does not support function overloading.    
     C++ support.
 */
@@ -74,7 +77,7 @@ void func(double v1, int v2){
     cout << "func(double v1, int v2)" << endl;
 }
 
-// Ambiguity
+// Ambiguity: their parameter lists aren’t different
 // int func(){
 //     return 0;
 // }

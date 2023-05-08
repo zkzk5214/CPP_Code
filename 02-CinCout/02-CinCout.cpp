@@ -15,9 +15,11 @@ int main(){
     // cout - (“see out”) object to display messages on the computer’s screen.
     // endl - (“end-line”) to instruct cout to start a new line.
     cout << "Please type a number:" << endl;
+    
     int age;
     cin >> age;  // Assign keyboard entry to cin
     cout << "age is " << age << endl;
+
     // getchar(); 
     return 0;
 }
