@@ -15,3 +15,5 @@
 !.scala
 !.java
 !.gitignore
+!c_cpp_properties.json
+!tasks.json
