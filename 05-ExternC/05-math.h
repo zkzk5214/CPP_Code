@@ -1,10 +1,10 @@
 /*
-    1-Header file (.h): use for put Function Prototypes 
-    2-Use #ifndef、#define、#endif to prevents the header file 
+    M1-Header file (.h): use for put Function Prototypes. 
+    M2-Use #ifndef、#define、#endif to prevents the header file 
         from accidentally being included more than once.
-    3-#ifndef、#define、#endif is supported by C/C++ standard 
-        with no subject to any restrctions of complier
-    4-#ifndef、#define、#endif can also act on parts of the code 
+    M3-#ifndef、#define、#endif is supported by C/C++ standard 
+        with no subject to any restrctions of complier.
+    M4-#ifndef、#define、#endif can also act on parts of the code 
         in .h file.
 */ 
 
@@ -16,7 +16,7 @@ If the __cplusplus constant has not been defined,
     the next line is included in the program.
     Otherwise, this line are not included in the program.
 */ 
-#ifdef __cplusplus 
+#ifdef __cplusplus // distinguish between C/C++
 extern "C" {
 #endif // __cplusplus
     // Function Prototypes 
