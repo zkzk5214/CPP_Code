@@ -1,16 +1,25 @@
-// header file: 存放函数的声明 
+/*
+    1-Header file (.h): use for put Function Prototypes 
+    2-Use #ifndef、#define、#endif to prevents the header file 
+        from accidentally being included more than once.
+    3-#ifndef、#define、#endif is supported by C/C++ standard 
+        with no subject to any restrctions of complier
+    4-#ifndef、#define、#endif can also act on parts of the code 
+        in .h file.
+*/ 
 
-// 使用#ifndef、#define、#endif来防止头文件的内容被重复包含
-// #ifndef、#define、#endif 受C/C++标准的支持,不受编译器的任何限制
-// #ifndef、#define、#endif 可以针对一个文件中的部分代码
-// #ifndef __MATH_H //文件名(规范)
-// #define __MATH_H
+// #ifndef __MATH_H // ifndef:"if not defined".
+// #define __MATH_H 
 
-
-#ifdef __cplusplus // 如果定义了cpp宏(条件定义), 中间的代码才可以参与编译
+/*
+If the __cplusplus constant has not been defined, 
+    the next line is included in the program.
+    Otherwise, this line are not included in the program.
+*/ 
+#ifdef __cplusplus 
 extern "C" {
 #endif // __cplusplus
-
+    // Function Prototypes 
     int sum(int v1, int v2);
     int delta(int v1, int v2);
 

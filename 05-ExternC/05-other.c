@@ -2,7 +2,5 @@
 #include <stdio.h>
 
 void other(){
-    
-    printf("other -%d\n", sum(10,20));
-    
+    printf("other -%d\n", sum(10,20));    
 }

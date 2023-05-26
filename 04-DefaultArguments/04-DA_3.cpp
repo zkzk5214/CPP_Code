@@ -53,7 +53,6 @@ int main(){
 /*
 Extra:
 1:void *p()
-    void *p()是一个指针型函数，它的函数名为p,范围了一个指针，因为是void,这个指针没有定义类型，所以返回的是一个通用型指针。
     void *p() is a function pointer, name is p, beacuse of void type, it return a general-purpose pointer
     which means this pointer refer to the pointer that have no data type associated with it.
 2:void pointers(void *ptr)

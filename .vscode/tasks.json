@@ -5,7 +5,7 @@
             "label": "clang++ build active file",
             "command": "/usr/bin/clang++", // 命令是clang++
             "args": [
-                "-std=c++11",  //使用c++17标准编译
+                "-std=c++11",  //使用c++11标准编译
                 "-stdlib=libc++",
                 "-fcolor-diagnostics",
                 "-fansi-escape-codes",
