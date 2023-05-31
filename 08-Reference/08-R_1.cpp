@@ -1,14 +1,6 @@
 #include <iostream>
 using namespace std;
 
-// 1-在c语言中,使用指针可以间接获取、修改某个变量的值
-// 2-在c++中,使用引用可以起到跟指针类似的功能
-// 引用相当于是变量的别名(基本数据类型、枚举、结构体、类、指针、数组等,都可以有引用)
-// 3-对引用做计算,就是对引用所指向的变量做计算
-// 4-在定义的时候就必须初始化,一旦指向了某个变量,就不可以再改变,从一而终(指针可以)
-// 5-可以利用引用初始化另一个引用,相当于某个变量的多个别名
-// 6-不存在引用的引用、指向引用的指针、引用数组
-
 /*
     1-In C/C++, pointer can indirectly access/modify the value of a variable
     2-In C++, the use of reference can perform similar abilities to pointer
