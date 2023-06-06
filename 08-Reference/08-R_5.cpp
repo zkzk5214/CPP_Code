@@ -16,9 +16,9 @@ int main(){
 
     // Reference to Array
     // data_type (&name)[size] = array;
-    int (&ref)[3] = arr;
+    int (&ref)[3] = arr; // ref: address of arr
     // Const Reference are the only way to refer constant variable
-    // int* &ref = arr; // (X) the address of arr is a constant
+    // int* &ref = arr; // (X) the address of arr is a constant and cannot be modified
     int* const &ref_c = arr; 
 
     return 0;
