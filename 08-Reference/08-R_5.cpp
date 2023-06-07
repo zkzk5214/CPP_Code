@@ -4,11 +4,12 @@ using namespace std;
 
 int main(){
 
-    /* 
+/* 
+Array Reference
     The array name arr is actually the address of the array, which is also 
         the address of the first element in the array.
     arr can be thought of as a pointer to the first element of the array (int*).
-    */
+*/
     int arr[] = {1,2,3}; // arr stores the address of the first element
     cout << *arr << endl;       // arr[0]
     cout << *(arr+1) << endl;   // arr[1]
@@ -16,10 +17,10 @@ int main(){
 
     // Reference to Array
     // data_type (&name)[size] = array;
-    int (&ref)[3] = arr; // ref: address of arr
+    int (&ref1)[3] = arr; // ref1: address of arr
     // Const Reference are the only way to refer constant variable
     // int* &ref = arr; // (X) the address of arr is a constant and cannot be modified
-    int* const &ref_c = arr; 
+    int* const &ref2 = arr; 
 
     return 0;
 }
