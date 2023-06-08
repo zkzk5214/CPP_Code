@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 /*
-Heap space Initialization
+Heap Initialization
     memset() is used to fill a block of memory with a particular value,
         and is also a fast method to clean up the memory of larger data 
         structures(object,arrays, etc.)

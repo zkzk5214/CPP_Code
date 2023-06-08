@@ -25,7 +25,7 @@ A typical memory representation of a C program consists of the
 
     4-Heap
         Here dynamic memory allocation takes place.
-        Need to take the initiative to allocate and release. 
+        Need to take the initiative to allocate and deallocate. 
         In order to have the freedom to control the life cycle and size 
     of memory durning the entire running process of the program, the 
     heap is often used
@@ -35,9 +35,9 @@ A typical memory representation of a C program consists of the
     is also stored here.
         Stack Frame: A set of values pushed for one function call is 
     called Stack Frame.
-        Automatically allocate and release.
+        Automatically allocate and deallocate.
         Each time a function is called, it is allocated a contiguous chunk
-    of stack space, and released automatically when the function is 
+    of Stack, and deallocated automatically when the function is 
     deconstruction.
 */
 
