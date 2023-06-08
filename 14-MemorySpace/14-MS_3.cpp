@@ -1,35 +1,49 @@
 #include <iostream>
 using namespace std;
-
-// 探讨 堆空间会不会初始化
-// memset函数是将较大的数据结构(比如对象,数组等)内存清理的比较快的方法
-void test3(){
-    // int *p =(int *) malloc(4);
-    // *p = 0; // 初始化,有条件限制的,只能清零前4个
-    int size = sizeof(int)*10; // 假设int为4个字节
-    int *p =(int *) malloc(size);
-    memset(p, 0, size); // 从这个地址开始,连续40个字节,都设置为0
-
-    // 将4个字节设置为1
-    // 00000000 00000000 00000000 00000001
-
-    // 从p地址开始的连续4个字节中的每一个字节都设置为1
-    // 00000001 00000001 00000001 00000001
-    // memset(p, 1, 4);
-    cout << *p << endl;
-}
+/*
+Heap space Initialization
+    memset() is used to fill a block of memory with a particular value,
+        and is also a fast method to clean up the memory of larger data 
+        structures(object,arrays, etc.)
+        
+    void *memset(void *ptr, int x, size_t n);
+    ptr ==> Starting address of memory to be filled
+    x   ==> Value to be filled
+    n   ==> Number of bytes to be filled starting from ptr to be filled
+    
+*/
 
 void test4(){
-    int *p0 = new int;
-    int *p1 = new int();
-    int *p2 = new int(5); // 初始化为传进去的值
-    int *p3 = new int[3]();
-    // int *p5 = new int[3]{};
-    // int *p6 = new int[3]{5}; // 数组的首元素被初始化为5,其他元素被初始化为0
-    cout << *p0 << endl;
-    cout << *p1 << endl;
-    cout << *p2 << endl;
-    cout << *p3 << endl;
+    // int *p =(int *) malloc(4);
+    // *p = 0; // Only the first 4 bytes can be reset
+
+    int size = sizeof(int)*10; // int is 4 bytes
+    int *p =(int *) malloc(size);
+    // Starting at the start address of p, 
+    // consecutive 40 bytes are set to 0.
+    memset(p, 0, size); 
+    // cout << *p << endl;
+
+    // Set four bytes to 1
+    // 00000000 00000000 00000000 00000001
+
+    // Starting at the start address of p,
+    // each first byte of each consecutive bytes set to 1
+    // 00000001 00000001 00000001 00000001
+    // memset(p, 1, 4);
+}
+
+void test5(){
+    int *p0 = new int;      // Uninitialized
+    int *p1 = new int();    // Initialize to 0
+    int *p2 = new int(5);   // Initialize to 5
+    int *p3 = new int[3];   // Array is uninitialized
+    int *p4 = new int[3](); // Array is initialize to 0
+    int *p5 = new int[3]{}; // Array is initialize to 0
+    // The first element of this array is initialized to 5, 
+    // and all other elements are initialized to 0
+    int *p6 = new int[3]{5};
+    cout << *p0 << *p1 << *p2 << *p3 << *p4 << *p5 << *p6 << endl;
 }
 
 struct Person{
@@ -37,29 +51,24 @@ struct Person{
     int m_age;
     int m_height;
     
-
     void display(){
-        cout << "id = " << m_id 
-            << ", age = " << m_age
-            << ", height = " << m_height << endl;
+        cout << "id = " << this->m_id 
+            << ", age = " << this->m_age
+            << ", height = " << this->m_height << endl;
     }
 };
 
 int main(){
+    test4();
+    test5();
 
-    // test3();
-    // test4();
-    // getchar();
+    Person person;
+    person.m_id = 1;
+    person.m_age = 20;
+    person.m_height = 180;
+    memset(&person, 0, sizeof(person));
 
-    // Person person;
-    // person.m_id = 1;
-    // person.m_age = 20;
-    // person.m_height = 180;
-    // memset(&person,0,sizeof(person));
-
-    Person person[] = {{1,20,180},{2,25,165},{3,27,170}};
-    memset(&person,0,sizeof(person));
-
-
+    Person persons[] = { {1,20,180}, {2,25,165}, {3,27,170} };
+    memset(&persons, 0, sizeof(persons));
     return 0;
 }

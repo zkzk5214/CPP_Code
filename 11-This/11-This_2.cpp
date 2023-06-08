@@ -1,35 +1,34 @@
 #include <iostream>
 using namespace std;
 
-// ip寄存器指针指向下一条需要执行的机器指令的地址
-// ip+=刚执行完的机器指令的大小
-// 调用函数执行函数代码,其实就是cpu在访问代码区的内存(指令)
+/*
+    The nature of pointer access object members:
 
+    1)
+        ip: The register pointer points to the address of 
+    the next machine instruction to be executed.
+        ip+= The size of the machine instruction that has
+    just been executed
+        Calling the function to execute the function code is 
+    actually the cpu accessing the memory(instruction) in the
+    Code Segment.
+
+    2)
+        When the function is called, additional storage needs 
+    to be allocated to hold the local variables inside the 
+    function.
+        Function code store in the Code Segment.
+        Local variables store in the Stack.
+*/ 
 struct Person{
     int m_id;
     int m_age;
     int m_height;
 
-    void run(){
-        cout << "Person::run()" << m_age << endl;
-    }
-
-    // 调用函数的时候,需要分配额外的存储空间来存储函数内部的局部变量
-    // 函数代码存储在代码区
-    // 局部变量存储在栈空间
-    void run_(){
-        cout << "Person::run()" << this-> m_age << endl; 
-        m_age = 3; // 等价 this->m_age = 3;
-        // 不可以利用this.m_age来访问变量,因为this是指针,必须用this->m_age
-    }
-
     void display(){
-        // 中断: interrupt
-        // cc -> int3:起到断点的作用
-        // ccccccc:int3int3...
-        cout << "id = " << m_id 
-            << ", age = " << m_age
-            << ", height = " << m_height << endl;
+        cout << "id = " << this->m_id 
+            << ", age = " << this->m_age
+            << ", height = " << this->m_height << endl;
     }
 };
 
@@ -40,28 +39,35 @@ int main(){
     person1.m_age = 20;
     person1.m_height = 30;
 
-    // 编译器将m_age的地址当作person的首地址来赋值 (见10-Class2.cpp)
+    // The compiler takes the address of m_age as the first address 
+    //      of "person1" to assign the value
     Person *p = (Person *) &person1.m_age;
+    p->m_id = 40;       // the address of m_id is actually m_age
+    p->m_age = 50;      // the address of m_age is actually m_height
+    person1.display();  // 10; 40; 50, 
+    /*
+    The member function called has different address.
+    Pass the address of "person1" to "this" of the display function.
+    Pass &person1.m_age to "this" of the display function.
     p->m_id = 40;
+    mov eax,  dword ptr [p]
+    mov dword ptr [eax+0], 40
+    mov dword ptr [&person+4+0], 40
     p->m_age = 50;
+    mov dword ptr [eax+4], 50
+    mov dword ptr [&person+4+4], 50
+    */
 
-    // 调用成员函数地址值不同
-    // 将 person1 对象的地址传递给 display 函数的 this
-    person1.display(); 
-    // p->m_id = 40;
-    // mov eax,  dword ptr [p]
-    // mov dword ptr [eax+0], 40
-    // mov dword ptr [&person+4+0], 40
-    // p->m_age = 50;
-    // mov dword ptr [eax+4], 50
-    // mov dword ptr [&person+4+4], 50
+    p->display(); 
+    /*
+    Pointer indirectly calls function and pass the address stored in 
+        pointer p to "this" of the display function.
 
-    // 将 &person1.m_age 传递给 display 函数的 this
-    p->display(); // 指针间接调用函数,会将指针p里面存储的地址传递给display函数的this
-    // eax == &person.m_age == &person+4
-    // mov eax,  dword ptr [this]
-    // [eax], [eax+4], [eax+8]
-    // [&person+4], [&person+8],[&person+12](越界)
+    eax == &person.m_age == &person+4
+    mov eax,  dword ptr [this]
+    [eax], [eax+4], [eax+8]
+    [&person+4], [&person+8], [&person+12](OOB)
+    */
 
     // getchar();
     return 0;

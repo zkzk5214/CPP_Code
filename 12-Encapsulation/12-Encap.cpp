@@ -1,7 +1,8 @@
 #include <iostream>
 using namespace std;
 
-// 成员变量私有化,提供公共的getter和setter给外界去访问成员变量
+// Privatize member variable, providing public function getter and setter 
+// for the outside to access the private member variable.
 
 struct Person{
 private:
@@ -9,24 +10,24 @@ private:
 public:
     void setAge(int age){
         if (age<=0) {
-            m_age = 1;
+            this->m_age = 1;
         }   
         else{
-            m_age = age;
+            this->m_age = age;
         }
     }
 
     int getAge(){
-        return m_age;
+        return this->m_age;
     }
 };
 
 int main(){
-
     Person person;
     person.setAge(-4);
     cout << person.getAge()<<endl;
-
+    person.setAge(20);
+    cout << person.getAge()<<endl;
     // getchar();
     return 0;
 }
