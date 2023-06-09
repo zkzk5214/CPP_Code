@@ -1,7 +1,5 @@
-
 #include <iostream>
 using namespace std;
-
 /*
 Constructor: Called automatically when an object is created and are
         typically used to initialize an object.
@@ -16,23 +14,19 @@ Constructor: Called automatically when an object is created and are
         4-Under certain conditions, the compiler generates empty,
             no argument constructors for each class.        
 */
-
 struct Person{
     int m_age;
     int m_money;
-
     // Constructor
     Person(){
         m_age = 0;
         cout << "Person()" << endl;
     }
-
     // Constructor Overload
     Person(int age){
         m_age = age;
         cout << "Person(int age)" << endl; 
     }
-    
     // Constructor Overload
     Person(int age, int money){
         m_age = age;
@@ -44,7 +38,25 @@ struct Person{
     }
 };
 
+// Global Area
+Person g_p1;        // Call Person()    
+// Function declaration, function name is g_p2, 
+// return type is Person, no parameter
+Person g_p2();      
+Person g_p3(20);    // Call Person(int)
+
 int main(){
+    // Stack
+    Person p1;      // Call Person()  
+    Person p2();
+    // Function declaration, function name is g_p2, 
+    // return type is Person, no parameter
+    Person p3(20);  // Call Person(int)
+    // Heap
+    Person *p4 = new Person;        // Call Person() 
+    Person *p5 = new Person();      // Call Person() 
+    Person *p6 = new Person(20);    // Call Person(int)
+
     Person person1(10, 20);
     person1.display();
     

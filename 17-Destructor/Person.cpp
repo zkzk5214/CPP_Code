@@ -1,14 +1,18 @@
 #include "Person.h"
- 
-void Person::setAge(int age){
-    m_age = age;
-}
-int Person::getAge(){
-    return m_age;
-}
+
+// Function Definition(.cpp)
 Person::Person(){
     m_age = 0;
 }
-Person::~Person(){
 
+// :: setAge belongs to the class Person
+void Person::setAge(int age){
+    this->m_age = age;
+}
+
+int Person::getAge(){
+    return m_age;
+}
+
+Person::~Person(){
 }

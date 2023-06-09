@@ -3,7 +3,6 @@
 using namespace std;
 
 // Terminal: clang++ Person_main.cpp Person.cpp -o Person_main
-// 一起编译
 
 int main(){
     Person person;
