@@ -1,5 +1,8 @@
 #pragma once
 
+// class cannot be re-defined
+// For example, there is a class named Person in namespace AA in anther folder.
+
 namespace AA{
     class Person{
     public:
@@ -8,5 +11,3 @@ namespace AA{
     };
 }
 
-// 类不能重复定义
-// 比如 在其他文件夹下有 namespace AA 下的一个类也叫 Person

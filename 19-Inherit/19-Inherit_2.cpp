@@ -1,33 +1,34 @@
 #include <iostream>
 using namespace std;
-// 继承,可以让子类拥有父类的所有成员(变量、函数)
-// 基类(cpp没有),类似python的object
 
-// 对象的内存布局
-struct Person{  // superclass
+/*
+Object memory layout 
+    1-Member variables inherited from the Superclass are arranged before the address in memory. 
+    2-If the variable in Superclass is not allocated, memory is wasted.
+*/
+struct Person{  // Superclass
     int m_age;
 };
-struct Student:Person{ // subclass 
+struct Student:Person{ // Subclass 
     int m_no;
 };
-struct GoodStuden:Student{ // subclass 
+struct GoodStudent:Student{ // Subclass 
     int m_score;
 };
 
-
 int main(){
-
-    // Person person; // 4个字节
-    // Student stu; // 8个字节
-    GoodStuden gs; // 12个字节
+    // Person person; // 4 bytes
+    // Student stu; // 8 bytes
+    GoodStudent gs; // 12 bytes
     cout << sizeof(gs) << endl;
-    // 从父类继承的成员变量会排布在内存地址的前面
-    // 如果父类的变量没有被调用,则内存被浪费
+ 
     gs.m_age = 20;
     gs.m_no = 1;
     gs.m_score = 666;
 
-    cout << &gs.m_age <<endl;
+    // Address of m_age in Superclass Person
+    // Address of Superclass member variable comes first, Subclass member variable comes last.
+    cout << &gs.m_age <<endl; 
     cout << &gs.m_no <<endl;
     cout << &gs.m_score <<endl;
 
