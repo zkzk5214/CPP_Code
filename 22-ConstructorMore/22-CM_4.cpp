@@ -1,11 +1,12 @@
 #include <iostream>
 using namespace std;
 
+// Execution order of constructors and destructors
 struct Person{
-    Person(){ // 构造函数
+    Person(){ // Constructor
         cout << "Person::Person()"<<endl;
     }
-    ~Person(){ // 析构函数
+    ~Person(){ // Destructor
         cout << "Person::~Person()"<<endl;
     }
 };
@@ -22,7 +23,6 @@ struct Student:Person{
 };
 
 int main(){
-
     {
         Student student;
     }

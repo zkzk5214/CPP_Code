@@ -39,8 +39,8 @@ int main(){
         int m_height, person_.m_age and person_.m_height are
         both 180.
     */
-    cout << person_.m_age << endl;      // Gibberish
-    cout << person_.m_height << endl;   // 180
+    // cout << person_.m_age << endl;      // Gibberish
+    // cout << person_.m_height << endl;   // 180
 
     // getchar();
     return 0;
