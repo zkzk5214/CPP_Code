@@ -1,11 +1,21 @@
 #include <iostream>
 using namespace std;
-
-// 单例模式:设计模式中的一种,保证某个类永远只创建一个对象
-// 1.构造函数\析构函数 私有化
-// 2.定义一个私有的 static 成员变量指向唯一的那个单例对象
-// 3.提供一个公共的访问单例对象的接口
-
+/*
+    1-A singleton class is a special type of class in object-oriented programming 
+        which can have only one object or instance at a time. In other words, 
+        we can instantiate only one instance of the singleton class. The new 
+        variable also points to the initial instance created if we attempt to 
+        instantiate the Singleton class after the first time. This is implemented 
+        by using the core concepts of object-oriented programming namely access 
+        modifiers, constructors & static methods.  
+    2-Steps to Implement Singleton Class in C++:
+        2.1-Make all the constructors of the class private.
+        2.2-Delete the copy constructor of the class.
+        2.3-Make a private static pointer that can point to the same class object 
+            (singleton class).
+        2.4-Make a public static method that returns the pointer to the same class 
+            object (singleton class).
+*/
 class Rocket{
 private:
     Rocket(){}; // 1-构造函数私有化

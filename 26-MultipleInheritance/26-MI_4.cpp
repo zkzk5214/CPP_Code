@@ -1,6 +1,8 @@
 #include <iostream>
 using namespace std;
 
+// Functions Overhide
+
 class Student{
 public:
     int m_age;
@@ -20,7 +22,7 @@ public:
 
 class Undergraduate : public Student, public Worker{
 public:
-    int m_age; // 此语法不报错
+    int m_age; // No gramma errors 
     void eat(){
         std::cout << "Undergraduate::eat()" << '\n';
     }
@@ -28,16 +30,16 @@ public:
 
 
 int main(int argc, char const *argv[]) {
-    Undergraduate ug; // 12bytes, 有3个 m_age
-    ug.eat(); // 调用的是 Undergradu 的 eat
-    ug.Student::eat(); // 指明调用父类 Student 的 eat
-    ug.Worker::eat(); // 指明调用父类 Worker 的 eat
-    ug.Undergraduate::eat();
+    Undergraduate ug;           // 12bytes, have three m_age
+    ug.eat();                   // Undergraduate::eat
+    ug.Student::eat();          // Student::eat
+    ug.Worker::eat();           // Worker::eat
+    ug.Undergraduate::eat();    // Undergraduate::eat
 
-    // 不报错，不建议
-    ug.Student::m_age = 11;
-    ug.Worker::m_age = 12;
-    ug.Undergraduate::m_age = 13;
+    // No Warning, Not Recommended
+    // ug.Student::m_age = 11;
+    // ug.Worker::m_age = 12;
+    // ug.Undergraduate::m_age = 13;
 
     return 0;
 }

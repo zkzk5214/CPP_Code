@@ -1,31 +1,29 @@
 #include <iostream>
 using namespace std;
+/* 
+    1-Destructor should be declared virtual if there is a superclass 
+        pointer to the subclass object(virtual destructor)
+    2-The destructor of the subclass is only called when the superclass 
+        is delete, ensuring integrity of the destruction.
+    3-When the superclass destructor is virtual, the subclass destructor 
+        becomes virtual as well.
+*/
 
-// 1-存在父类指针指向子类对象的时候 ,应该将析构函数声明为虚函数(虚析构函数)
-// delete父类指针时,才会调用子类的析构函数,保证析构的完整性
-// 父类析构函数为虚函数,子类析构函数也会变成虚函数
-struct Animal{
-    int m_age;
-    void speak(){ // 2-虚函数 
-        cout << "Animal::speak()"<<endl;
-    }
-    void run(){
+class Animal{
+public:
+    virtual void run(){
         cout << "Animal::run()"<<endl;
     }
     Animal(){
         cout << "Animal::Animal()" << endl;
     }
-    // 1
-    virtual ~Animal(){ 
+    virtual ~Animal(){ // 1
         cout << "Animal::~Animal()" << endl;
     }
 };
 
-struct Cat:Animal{
-    int m_life;
-    void speak(){
-        cout << "Cat::speak()"<<endl;
-    }
+class Cat: public Animal{
+public:
     void run(){
         cout << "Cat::run()"<<endl;
     }
@@ -37,13 +35,14 @@ struct Cat:Animal{
     }
 };
 
-
 int main(){
-    
-    Animal *cat = new Cat(); // 加了虚析构函数之后 看右边的类型决定最后 delete 的对象
-    cat -> speak();
+    // Superclass pointer to the Subclass object
+    Animal *cat = new Cat(); 
     cat -> run();
-    delete cat;
+    // After adding the virtual destructor, 
+    // look at the type on the right to determine the object to delete
+    delete cat; 
+
     // getchar();
     return 0;
 }
