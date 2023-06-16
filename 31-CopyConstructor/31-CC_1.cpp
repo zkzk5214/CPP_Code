@@ -1,9 +1,15 @@
 #include <iostream>
 using namespace std;
-
-// 拷贝构造函数是构造函数的一种(也会在对象创建的时候调用来初始化)
-// 当利用已存在的对象创建一个新对象时(类似于拷贝),就会调用新对象的拷贝构造函数进行初始化
-// 拷贝构造函数的格式是固定的,接受一个const引用作为参数
+/*
+Copy Constructor
+    1-Copy constructor is a type of constructor.(also called 
+        to initialize when the object is created)
+    2-When a new object is created from an existing object
+        (similar to a copy), the copy constrcutor of the new 
+        object is called for initialization.
+    3-The format of the Copy constructor is fixed and take a 
+        "const" reference as an argument.
+*/
 
 class Car{
     int m_price;
@@ -12,14 +18,14 @@ public:
     Car(int price=0, int length=0):m_price(price),m_length(length){
         cout << "Car(int price=0, int length=0)" << endl;
     }
-
-    // 拷贝构造函数- car4调用此方法初始化
-    // 此对象中会进行默认拷贝,因此无需调用此拷贝构造函数,除非有个性化要求
-    // Car(const Car &car):m_price(car.m_price),m_length(car.m_length){
-    //     cout << "Car(const Car &car)" << endl;
-    //     // m_price = car.m_price;
-    //     // m_length = car.m_length;
-    // }
+    
+    // The default copy takes place in this object, so there 
+    //  is no need to call this copy constructor unless personalized.
+    Car(const Car &car){
+        cout << "Car(const Car &car)" << endl;
+        this->m_price = car.m_price;
+        this->m_length = car.m_length;
+    }
 
     void display(){
         cout << "price=" << m_price << ", length=" << m_length << endl;
@@ -27,16 +33,19 @@ public:
 };
 
 int main(){
-    Car car1; // 构造函数在对象创建完之后就会调用
+    // The constructor is called after the object is created
+    Car car1; 
     Car car2(100);
-    Car car3(100,5);
+    Car car3(100, 5);
 
-    // 利用已经存在的car3对象创建了一个car4新对象
-    // car4初始化时会调用拷贝构造函数
+    // Create car4 object from an existing car3 object
+    // The copy constructor is called when car4 is initialized
     Car car4(car3); 
-    // 即使不写拷贝构造函数(Car(const Car &car)),也能进行拷贝操作
-    // (相等于car4.m_price=car3.m_price; car4.m_length=car3.m_length;)
+    // Copy operations can be performed without writing
+    //  the copy constructor(Car(const Car &car)) eauql to 
+    //  (car4.m_price=car3.m_price; car4.m_length=car3.m_length;)
     car4.display();
+
     // getchar();
     return 0;
 }

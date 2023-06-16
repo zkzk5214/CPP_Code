@@ -1,9 +1,10 @@
 #include <iostream>
 using namespace std;
-
-// 1-引用类型成员变量必须初始化(不考虑static情况)
-// 在声明的时候直接初始化
-// 通过初始化列表初始化
+/*
+1-Reference type member variable must be initialized(regradless of "static")
+    Initialize directly in the prototype.
+    Initialize with an Initializer List.
+*/
 
 class Car{
     int age;

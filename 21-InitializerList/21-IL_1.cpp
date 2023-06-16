@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 /*
-    Initial List
+    Initializer List
         1-A convenient way to initialize a member variable
             (not void type)
         2-Can only be used in constructor
