@@ -23,7 +23,6 @@ int main()
 	const int z = 10;
 	cout << foo(x) << '\n'
 		<< foo(z);
-
 	return 0;
 }
 
