@@ -1,8 +1,8 @@
  #include <iostream>
 using namespace std;
-
 /*
-单目运算符
+1-Operator overload: Can add some new functionality to operators
+2-Both global function and member function support operator overloading
 */
 
 class Point {
@@ -10,58 +10,61 @@ class Point {
 	int m_y;
 public:
 	Point(int x, int y) :m_x(x), m_y(y) {}
-	void display() {
-		cout << "(" << m_x << ", " << m_y << ")" << endl;
+    Point(const Point &point): m_x(point.m_x), m_y(point.m_y){}
+    void display() {
+		cout << "x = " << this->m_x << ", y = " << this->m_y << endl;
 	}
-    Point(const Point &point){ // 拷贝构造函数, 必须写&, 将地址值传入,不存在构建新的对象; const 引用可以接受(非)const参数
-        m_x = point.m_x;
-        m_y = point.m_y;
-    }
-
-    const Point operator+(const Point &point) const { // 成员函数,私有成员变量可以访问
+    const Point operator+(const Point &point) const {
         return Point(m_x+point.m_x, m_y+point.m_y);
     }
-
-    const Point operator-() const {
-        // 第一个const: -p1 = Point(10,20); 使其不允许实现
-        // 第二个const: -(-p1); 使其可以实现
-        return Point(-m_x, -m_y); // 返回临时的point对象 
+    const Point operator-(const Point &point) const { 
+        return Point(m_x-point.m_x, m_y-point.m_y);
     }
 
-    Point &operator++(){ // 前置++
-        m_x++;
-        m_y++;
-        return *this;
+    Point &operator+=(const Point &point) { 
+        /*
+        Point &(reference), return *this(object)
+        Point *, return this(address)
+        & reference, reduced the generation of intermediate object.
+        Member variable need to be modified, so there is no "const" 
+            after operator+=
+        */
+        m_x += point.m_x;
+        m_y += point.m_y;
+        // Get what this pointer points to, which is the current
+        // object, so return the object.
+        return *this; 
     }
-    const Point operator++(int){ // 后置++
-        Point old(m_x,m_y); // 临时对象 
-        m_x++;
-        m_y++;
-        return old;
+
+    bool operator==(const Point &point) const {
+        // if ((m_x == point.m_x) && (m_y) == point.m_y){
+        //     return 1;
+        // } else {
+        //     return 0;
+        // } 
+        return ((m_x == point.m_x) && (m_y) == point.m_y); 
+    }
+
+    bool operator!=(const Point &point) const {
+        return ((m_x != point.m_x) || (m_y) != point.m_y);
     }
 };
 
-
 int main() {
-
     Point p1(10,20);
     Point p2(20,30);
-    // -p1;
-    // Point p3 = -p1;
-    Point p3 = -(-p1);
 
-    // ++p1;
-    ++p1 = Point(1,2);
-    // p1++; 
-    Point p4 = p1++ + Point(30,40);
-    
-    // int a = 10;
-    // int b = ++a + 5; // a+=1; int b = a+5; ++a 可以被赋值
-    // int c = a++ + 5; // int c = 10(a)+5; a+=1; a++ 不能被赋值
-
+    // pass the address of p1 to "this", "this" points to the p1
+    // p1.operator+=(p2); 
+    p1+=p2;
     p1.display();
-    p3.display();
 
-	// getchar(); 
+    (p1+=p2) = Point(50,60);
+    p1.display();
+
+    // cout << (p1==p2) << endl;
+    // cout << (p1!=p2) << endl;
+
+	// getchar();
 	return 0;
 }
