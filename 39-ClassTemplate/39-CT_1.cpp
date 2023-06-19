@@ -1,43 +1,44 @@
 #include <iostream>
 using namespace std;
 
-class Array{
-    int *m_data; // 用于指向首元素
-    int m_size; // 元素个数
-    int m_capacity; // 容量
+/*Class without template*/
+class List{
+    int m_size;
+    int m_capacity; 
+    int *m_data; // Used to point to the head element
 public:
-    Array(int capacity = 0){
+    List(int capacity = 0){
         // if (capacity <= 0 ){
         //     m_capacity = 10;
         // } else {
         //     m_capacity = capacity;
         // }
         m_capacity = (capacity > 0) ? capacity :10;
-        m_data = new int[m_capacity];  //申请堆空间
+        m_data = new int[m_capacity];  //Request heap space
     }
-    ~Array(){
+    ~List(){
         if (m_data == NULL) return;
         delete[] m_data;
     }
     void add(int value){
         if (m_size == m_capacity){
             /*
-            扩容
-            1.申请一块更大的存储空间
-            2.将旧空间的数拷贝到新空间
-            3.释放旧空间
+            Expansion of capacity
+            1.Request a larger storage space
+            2.Copy the data from the old space into the new space
+            3.Release old space
             */
            cout << "OOC" << endl;
            return;
         }
-        // m_size对应下一个空出来的索引
+        // m_size++: The next empty index
         m_data[m_size++] = value;
         
     }
 
     int get(int index){
         if (index < 0 || index >= m_size) {
-            //报错:抛异常
+            // Throw an exception
             throw "Array subscript overstep the boundary";
         }
         return m_data[index];
@@ -54,10 +55,11 @@ public:
 };
 
 int main(){
-
-    // int *data = new int[10]; // data指针指向右边存储空间的第一个字节
-
-    Array array(3);
+    // The data pointer points to the first byte 
+    //      of the storage space on the right.  
+    // int *data = new int[10]; 
+    
+    List array(3);
     array.add(10);
     array.add(20);
     array.add(30);
