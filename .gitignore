@@ -17,3 +17,4 @@
 !.gitignore
 !c_cpp_properties.json
 !tasks.json
+!*.txt
