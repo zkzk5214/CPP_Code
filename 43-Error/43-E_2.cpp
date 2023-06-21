@@ -25,7 +25,11 @@ int main() {
 		int b = 0;
 		cout << divide(a, b) << endl;
 	} catch (const Exception &exception) {
+		// Inherited superclass exceptions
 		cout << exception.what() << endl;
+	} catch (...) {
+		// Intercepts all types of exceptions
+		cout << "Exception Occurs" << endl;
 	}
 
 	// getchar();
